@@ -63,7 +63,7 @@ class SimDocs:
 	"""All Hell Breaks Loose. This function pretty much does the heavy lifting."""
 	def main():
 		docs = {}
-		path = "C:\\Users\\Bhargava Ram\\Documents\\GitHub\\NLP\\poem\\"
+		path = "C:\\Users\\Bhargava Ram\\Documents\\GitHub\\Document-Similarity\\poem\\"
 		'''docs = read_dir(path)'''		
 		files = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path,f))]
 		docs_set = []
@@ -84,6 +84,12 @@ class SimDocs:
 			if(sim != 0):
 				print("the document relevant to the given docis: ",i)
 				docs_list.append(i)
+		similarity_doc = {}
+		for i in range(len(docs)):
+			s = SimDocs.similarity(doc_given,SimDocs.build_vocab_doc(docs[i]))
+			similarity_doc[i] = s
+		for i,v in similarity_doc.items():
+			print("Similarity between given doc and current doc is: ", v)
 		return docs_list
 
 if __name__ == '__main__':
