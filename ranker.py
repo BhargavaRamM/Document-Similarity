@@ -74,7 +74,6 @@ class SimDocs:
         docs_set = []
         for i in range(len(files)):
             file_path = self._path+str(files[i])
-            print file_path
             with open(file_path,'rb') as d:
                 data = d.read().replace("\n", " ")
                 docs_set.append(data)
@@ -92,10 +91,8 @@ class SimDocs:
             s = self.similarity(doc_given, self.build_vocab_doc(docs[i]))
             similarity_doc[i] = s
         for i, v in similarity_doc.items():
-            print("Similarity between given doc and current doc is : ", (i, v))
-        return similarity_doc
+            print "Similarity between given doc and current doc ", i, " is : ",  v
 
 
 if __name__ == '__main__':
-    print("Hello!!")
-    similarity_doc_list = SimDocs(argv[1],argv[2]).main()
+    SimDocs(argv[1], argv[2]).main()
